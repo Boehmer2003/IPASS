@@ -6,7 +6,6 @@
 #include "game.hpp"
 #include "leds.hpp"
 #include <cstdlib>
-#include<ctime>
 
 void game::starting() {
     grid.initialise();

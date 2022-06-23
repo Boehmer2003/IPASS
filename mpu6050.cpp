@@ -3,7 +3,7 @@
 //
 #include "mpu6050.hpp"
 #include "hwlib.hpp"
-
+#include "adressen.hpp"
 
 mpu6050::mpu6050(hwlib::i2c_bus & bus):
     bus(bus)
