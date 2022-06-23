@@ -66,7 +66,7 @@ class game {
     /// It looks at the x from the targer and player and also to the y and if they are both the same it sets a  flag to true.
     void target_controle();
 public:
-    game( mpu6050 chips);
+    game( mpu6050 & chips);
 
     /// \brief
     /// This function calls upon all the other functions in this class.

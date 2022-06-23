@@ -1,5 +1,13 @@
 #include "hwlib.hpp"
 #include "game.hpp"
+
+
+//// TODO: vragen of dit een superklassen is.
+//// TODO: mis een powerup systeem toevoegen.
+//// TODO: opruimen van de code.
+//// TODO: testcases schrijven.
+//// TODO:
+
 int main() {
     hwlib::target::pin_oc scl = hwlib::target::pin_oc(hwlib::target::pins::scl);
     hwlib::target::pin_oc sda = hwlib::target::pin_oc(hwlib::target::pins::sda);

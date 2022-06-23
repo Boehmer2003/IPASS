@@ -23,7 +23,7 @@ int mpu6050::test(){
     int data = dataStore[0];
     return data;
 }
-int mpu6050::getGyroX() {
+int mpu6050::getGyrox() {
     bus.write(MPU_Address).write(GYRO_XOUT_H);
     bus.read(MPU_Address).read(dataStore1, 1);
     bus.write(MPU_Address).write(GYRO_XOUT_L);
@@ -32,7 +32,7 @@ int mpu6050::getGyroX() {
 
     return data;
 }
-int mpu6050::getGyroY(){
+int mpu6050::getGyroy(){
     bus.write(MPU_Address).write(GYRO_YOUT_H);
     bus.read(MPU_Address).read(dataStore1, 1);
     bus.write(MPU_Address).write(GYRO_YOUT_L);

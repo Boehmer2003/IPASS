@@ -5,7 +5,7 @@
 #include <cstdlib>
 
 
-game::game( mpu6050 chips):
+game::game( mpu6050 & chips):
         chip(chips)
         {}
 
