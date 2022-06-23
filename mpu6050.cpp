@@ -13,7 +13,7 @@ mpu6050::mpu6050(hwlib::i2c_bus & bus):
 
 void mpu6050::starting() {
     auto trans = bus.write(MPU_Address);
-    trans.write(0x6B);
+    trans.write(PWR_MGMT_1);
     trans.write(0x00);
 }
 
@@ -33,9 +33,9 @@ int mpu6050::getGyroX() {
     return data;
 }
 int mpu6050::getGyroY(){
-    bus.write(MPU_Address).write(ACCEL_YOUT_H);
+    bus.write(MPU_Address).write(GYRO_YOUT_H);
     bus.read(MPU_Address).read(dataStore1, 1);
-    bus.write(MPU_Address).write(ACCEL_YOUT_L);
+    bus.write(MPU_Address).write(GYRO_YOUT_L);
     bus.read(MPU_Address).read(dataStore2, 1);
     int16_t data = int16_t((dataStore1[0] << 8) | dataStore2[0]);
     return data;
