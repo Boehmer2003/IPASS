@@ -76,3 +76,12 @@ int mpu6050::getaccelz() {
     int16_t data = int16_t((dataStore1[0] << 8) | dataStore2[0]);
     return data;
 }
+int mpu6050::temperature() {
+    bus.write(MPU_Address).write(TEMP_OUT_H);
+    bus.read(MPU_Address).read(dataStore1, 1);
+    bus.write(MPU_Address).write(TEMP_OUT_L);
+    bus.read(MPU_Address).read(dataStore2, 1);
+    int16_t data = int16_t((dataStore1[0] << 8) | dataStore2[0]);
+    return (data)/340 + 36.53;
+}
+

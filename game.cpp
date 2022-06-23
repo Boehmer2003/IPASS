@@ -1,10 +1,7 @@
 //
 // Created by benja on 22/06/2022.
 //
-#include "hwlib.hpp"
-#include "mpu6050.hpp"
 #include "game.hpp"
-#include "leds.hpp"
 #include <cstdlib>
 
 
@@ -92,6 +89,7 @@ void game::beweeg_player_y_and_x(int& y,int& x) {
 
 
 void game::games() {
+    hwlib::cout<<chip.temperature()<<hwlib::endl;
     starting();
     tijd = false;
     while (gameover) {

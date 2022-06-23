@@ -71,6 +71,8 @@ public:
     /// \details
     ///  The function writes to the accel and receives a high and low bits of the z and that turns in a number.
     int getaccelz();
+
+    int temperature();
 };
 
 
