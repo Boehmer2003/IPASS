@@ -7,7 +7,7 @@
 
 mpu6050::mpu6050(hwlib::i2c_bus & bus):
     bus(bus)
-    {}
+    {starting();}
 
 
 

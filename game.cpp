@@ -7,9 +7,14 @@
 #include "leds.hpp"
 #include <cstdlib>
 
+
+game::game( mpu6050 chips):
+        chip(chips)
+        {}
+
+
 void game::starting() {
     grid.initialise();
-    chip.starting();
     gameover = true;
     punten = 0;
     test = true;
@@ -17,7 +22,7 @@ void game::starting() {
         if (chip.test() == 0x68) {
             test = false;
         } else {
-            hwlib::cout<<"something went wrong with starting the MPU6050";
+            hwlib::cout<<"something went wrong with starting the MPU6050"<<hwlib::endl;
             test = true;
         }
     }
@@ -89,36 +94,35 @@ void game::beweeg_player_y_and_x(int& y,int& x) {
 void game::games() {
     starting();
     tijd = false;
-    while(gameover) {
-        if(punten==1 and tijd){
-             begin = hwlib::now_us();
+    while (gameover) {
 
+        if (punten == 1 and tijd) {
+            begin_tijd = hwlib::now_us();
         }
         hwlib::wait_ms(300);
+
         auto x = chip.getaccelx();
         auto y = chip.getaccely();
+
         clear_grid();
-
-        beweeg_player_y_and_x(y,x);
-        raak_controle();
+        beweeg_player_y_and_x(y, x);
+        target_controle();
         beweeg_doel_y_and_x();
-
 
         draw_grid();
 
-
-        if (controle == true){
+        if (controle == true) {
             punten++;
-            hwlib::cout<<punten<<hwlib::endl;
-            if(punten==1 and tijd == false){
-                tijd= true;
+            if (punten == 1 and tijd == false) {
+                tijd = true;
             }
         }
-        if(punten==10){
-            auto eind = hwlib::now_us();
-            auto diff =(eind-begin)/1000000;
-            hwlib::cout<<diff<<" sec"<<hwlib::endl;
-            gameover= false;
+
+        if (punten == 10) {
+             eind_tijd = hwlib::now_us();
+            diff_tijd = (eind_tijd - begin_tijd) / 1000000;
+            hwlib::cout <<"10 punten in " <<diff_tijd << " sec" << hwlib::endl;
+            gameover = false;
         }
 
         grid.write();

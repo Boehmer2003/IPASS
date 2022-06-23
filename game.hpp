@@ -14,17 +14,16 @@
 /// This class is for the game itself and it uses the mpu6050 as controlls
 
 class game {
-    hwlib::target::pin_oc scl = hwlib::target::pin_oc(hwlib::target::pins::scl);
-    hwlib::target::pin_oc sda = hwlib::target::pin_oc(hwlib::target::pins::sda);
-    hwlib::i2c_bus_bit_banged_scl_sda bus = hwlib::i2c_bus_bit_banged_scl_sda(scl, sda);
-    hwlib::target::pins leds = hwlib::target::pins::d3;
-    mpu6050 chip = mpu6050(bus);
+    const hwlib::target::pins leds = hwlib::target::pins::d3;
+    mpu6050 chip;
     ledGrid grid = ledGrid(8, 8, leds);
     bool test = true;
     bool tijd = false;
     bool gameover = true;
     bool controle= true;
-    int begin;
+    int diff_tijd =0;
+    int begin_tijd=0;
+    int eind_tijd = 0;
     int punten = 0;
     int doel_x = 1;
     int doel_y = 1;
@@ -67,6 +66,7 @@ class game {
     /// It looks at the x from the targer and player and also to the y and if they are both the same it sets a  flag to true.
     void target_controle();
 public:
+    game( mpu6050 chips);
 
     /// \brief
     /// This function calls upon all the other functions in this class.

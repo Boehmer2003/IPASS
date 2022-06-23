@@ -4,7 +4,7 @@
 
 #ifndef V1OOPC_EXAMPLES_ADRESSEN_HPP
 #define V1OOPC_EXAMPLES_ADRESSEN_HPP
-const uint8_t MPU_Address 	= 0x68;
+    const uint8_t MPU_Address 	= 0x68;
     const uint8_t PWR_MGMT_1 	= 0x6B;
     const uint8_t WHO_AM_I  	= 0x75;
     const uint8_t ACCEL_XOUT_H 	= 0x3B;

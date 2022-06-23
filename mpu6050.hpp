@@ -17,6 +17,7 @@ private:
     uint8_t dataStore1[1];
     uint8_t dataStore2[1];
 
+    void starting();
 
 public:
     /// \brief
@@ -27,7 +28,7 @@ public:
     /// A function to start the chip.
     /// \details
     /// The function writes 2 adresses the first one is the adress of the chip and the second address is a reset address this resets the chip and makes it ready.
-    void starting();
+
 
     /// \brief
     /// A function that test if the chip is working.
