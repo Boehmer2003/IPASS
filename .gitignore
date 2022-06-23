@@ -1048,4 +1048,5 @@ _cc_flags
 _cpp_flags
 _linker_flags
 bmptk_fixed_size_stack.c
+test
 *.ld
