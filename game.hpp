@@ -18,13 +18,21 @@ class game {
     mpu6050 chip;
     ledGrid grid = ledGrid(8, 8, leds);
     bool test = true;
-    bool tijd = false;
-    bool gameover = true;
-    bool controle= true;
-    int diff_tijd =0;
-    int begin_tijd=0;
-    int eind_tijd = 0;
+    bool time = false;
+    bool gameover = false;
+    bool controle_doel= true;
+    bool controle_powerup= true;
+    bool powerup = false;
+
+    int diff_time =0;
+    int begin_time=0;
+    int eind_time = 0;
+    int begin_powerup_time = 0;
+
     int punten = 0;
+
+    int powerupx = 6;
+    int powerupy = 6;
     int doel_x = 1;
     int doel_y = 1;
     int player_x = 4;
@@ -65,6 +73,11 @@ class game {
     /// \details
     /// It looks at the x from the targer and player and also to the y and if they are both the same it sets a  flag to true.
     void target_controle();
+
+    void beweeg_powerup_x_and_y();
+
+
+    void powerup_controle();
 public:
     game( mpu6050 & chips);
 
