@@ -23,24 +23,29 @@ void game::starting() {
             test = true;
         }
     }
-    grid.changeLedRGB(powerupx, powerupy, 0, 100, 0);
+    grid.changeLedRGB(powerup_x, powerup_y, 0, 100, 0);
 }
 
 
 void game::clear_grid() {
     grid.changeLedRGB(doel_x, doel_y, 0, 0, 0);
     grid.changeLedRGB(player_x, player_y, 0, 0, 0);
-    grid.changeLedRGB(powerupx, powerupy, 0, 0, 0);
+    grid.changeLedRGB(powerup_x, powerup_y, 0, 0, 0);
 
 }
 
 void game::draw_grid() {
 
     grid.changeLedRGB(doel_x, doel_y, 100, 0, 0);
-    grid.changeLedRGB(player_x, player_y, 0,0, 100);
-    if (((hwlib::now_us()-begin_powerup_time)/ 1000000)>=4) {
+    if (powerup) {
+        grid.changeLedRGB(player_x, player_y, 0, 100, 20);
+    }
+    else{
+        grid.changeLedRGB(player_x, player_y, 0, 0, 100);
+    }
+    if (((hwlib::now_us()-begin_powerup_time)/ 1000000)>=5) {
         powerup = false;
-        grid.changeLedRGB(powerupx, powerupy, 0, 100, 0);
+        grid.changeLedRGB(powerup_x, powerup_y, 0, 100, 0);
     }
 }
 
@@ -79,7 +84,6 @@ void game::beweeg_player_y_and_x(int& y,int& x) {
         player_x -= 1;
         if (player_x < 1 and powerup) {
             player_x = 8;
-            hwlib::cout<<"hallo";
         }
         else if (player_x<=1){
             player_x=1;
@@ -99,7 +103,7 @@ void game::beweeg_player_y_and_x(int& y,int& x) {
 
 
     }
-    else if (y < -9000  ) {
+    else if (y < -9000) {
         player_y += 1;
         if (player_y > 8 and powerup) {
             player_y = 1;
@@ -111,7 +115,7 @@ void game::beweeg_player_y_and_x(int& y,int& x) {
 }
 
 void game::powerup_controle() {
-    if (player_x == powerupx and player_y == powerupy) {
+    if (player_x == powerup_x and player_y == powerup_y) {
         begin_powerup_time = hwlib::now_us();
         controle_powerup = true;
         powerup = true;
@@ -123,12 +127,12 @@ void game::powerup_controle() {
 void game::beweeg_powerup_x_and_y() {
     int rand();
     if (controle_powerup ) {
-        powerupx = (rand() % 8) + 1;
-        powerupy = (rand() % 8) + 1;
+        powerup_x = (rand() % 8) + 1;
+        powerup_y = (rand() % 8) + 1;
     }
-    if(powerupx==doel_x and powerupy==doel_y){
+    if(powerup_x==doel_x and powerup_y==doel_y){
         doel_x=1;
-        powerupy=6;
+        powerup_y=6;
     }
 }
 

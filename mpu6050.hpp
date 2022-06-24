@@ -6,24 +6,35 @@
 #ifndef V1OOPC_EXAMPLES_mpu6050_HPP
 #define V1OOPC_EXAMPLES_mpu6050_HPP
 #include "hwlib.hpp"
-#include "superclass.hpp"
+#include "Gyroscope.hpp"
+#include "accelerometer.hpp"
+#include "temperature.hpp"
+
 /// \brief
 /// A class to control a the MPU6050 chip.
 /// \details
 /// A class with functie to receive data from mpu6050.
-class mpu6050: public superclass {
+class mpu6050: public gyroscope, public accelerometer, public temperature_sensor  {
 private:
     hwlib::i2c_bus & bus;
     uint8_t dataStore[2];
     uint8_t dataStore1[1];
     uint8_t dataStore2[1];
+    bool tester= true;
+
+
 
     /// \brief
     /// A function to start the chip.
     /// \details
     /// The function writes 2 adresses the first one is the adress of the chip and the second address is a reset address this resets the chip and makes it ready.
-     void starting() override;
+     void starting();
 
+    /// \brief
+    ///
+    /// \details
+    ///
+     int read(int HIGH,int LOW);
 public:
     /// \brief
     /// the constructor for the class to give the class the right pins.
@@ -37,7 +48,7 @@ public:
     /// A function that test if the chip is working.
     /// \details
     /// The function writes a address called WHO_AM_I and this will return a specific hexideciamel.
-    int test() override;
+    int test();
 
     /// \brief
     /// This function receives the x from the gyroscope.

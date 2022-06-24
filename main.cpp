@@ -2,9 +2,9 @@
 #include "game.hpp"
 
 
-//// TODO: vragen of dit een superklassen is.
-//// TODO: mis een powerup systeem toevoegen.
+//// TODO: superklassen per ding maken  accel gyro adn tempratuur.     check
 //// TODO: opruimen van de code.
+//// TODO: mis een powerup systeem verbeteren.
 //// TODO: testcases schrijven.
 //// TODO:
 

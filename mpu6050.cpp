@@ -22,65 +22,39 @@ int mpu6050::test(){
     return data;
 }
 
-int mpu6050::getGyrox() {
-    bus.write(MPU_Address).write(GYRO_XOUT_H);
+int mpu6050::read(int HIGH,int LOW){
+    bus.write(MPU_Address).write(HIGH);
     bus.read(MPU_Address).read(dataStore1, 1);
-    bus.write(MPU_Address).write(GYRO_XOUT_L);
+    bus.write(MPU_Address).write(LOW);
     bus.read(MPU_Address).read(dataStore2, 1);
     int16_t data = int16_t((dataStore1[0] << 8) | dataStore2[0]);
     return data;
+}
+
+int mpu6050::getGyrox() {
+    return read(GYRO_XOUT_H,GYRO_XOUT_L);
 }
 
 int mpu6050::getGyroy(){
-    bus.write(MPU_Address).write(GYRO_YOUT_H);
-    bus.read(MPU_Address).read(dataStore1, 1);
-    bus.write(MPU_Address).write(GYRO_YOUT_L);
-    bus.read(MPU_Address).read(dataStore2, 1);
-    int16_t data = int16_t((dataStore1[0] << 8) | dataStore2[0]);
-    return data;
+    return read(GYRO_YOUT_H,GYRO_YOUT_L);
 }
 
 int mpu6050::getGyroz() {
-    bus.write(MPU_Address).write(GYRO_ZOUT_H);
-    bus.read(MPU_Address).read(dataStore1,1);
-    bus.write(MPU_Address).write(GYRO_ZOUT_L);
-    bus.read(MPU_Address).read(dataStore2,1);
-    int16_t data = int16_t((dataStore1[0] << 8) | dataStore2[0]);
-    return data;
+    return  read(GYRO_ZOUT_H,GYRO_ZOUT_L);
 }
 
 int mpu6050::getaccelx() {
-    bus.write(MPU_Address).write(ACCEL_XOUT_H);
-    bus.read(MPU_Address).read(dataStore1,1);
-    bus.write(MPU_Address).write(ACCEL_XOUT_L);
-    bus.read(MPU_Address).read(dataStore2,1);
-    int16_t data = int16_t((dataStore1[0] << 8) | dataStore2[0]);
-    return data;
+    return  read(ACCEL_XOUT_H,ACCEL_XOUT_L);
 }
 
 int mpu6050::getaccely() {
-    bus.write(MPU_Address).write(ACCEL_YOUT_H);
-    bus.read(MPU_Address).read(dataStore1, 1);
-    bus.write(MPU_Address).write(ACCEL_YOUT_L);
-    bus.read(MPU_Address).read(dataStore2, 1);
-    int16_t data = int16_t((dataStore1[0] << 8) | dataStore2[0]);
-    return data;
+    return read(ACCEL_YOUT_H,ACCEL_YOUT_L);
 }
 int mpu6050::getaccelz() {
-    bus.write(MPU_Address).write(ACCEL_ZOUT_H);
-    bus.read(MPU_Address).read(dataStore1, 1);
-    bus.write(MPU_Address).write(ACCEL_ZOUT_L);
-    bus.read(MPU_Address).read(dataStore2, 1);
-    int16_t data = int16_t((dataStore1[0] << 8) | dataStore2[0]);
-    return data;
+    return read(ACCEL_ZOUT_H,ACCEL_ZOUT_L);
 }
 
 int mpu6050::temperature() {
-    bus.write(MPU_Address).write(TEMP_OUT_H);
-    bus.read(MPU_Address).read(dataStore1, 1);
-    bus.write(MPU_Address).write(TEMP_OUT_L);
-    bus.read(MPU_Address).read(dataStore2, 1);
-    int16_t data = int16_t((dataStore1[0] << 8) | dataStore2[0]);
-    return (data)/340 + 36.53;
+    return (read(TEMP_OUT_H,TEMP_OUT_L))/340 + 36.53;
 }
 

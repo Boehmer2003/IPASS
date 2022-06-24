@@ -31,8 +31,8 @@ class game {
 
     int punten = 0;
 
-    int powerupx = 6;
-    int powerupy = 6;
+    int powerup_x = 6;
+    int powerup_y = 6;
     int doel_x = 1;
     int doel_y = 1;
     int player_x = 4;
