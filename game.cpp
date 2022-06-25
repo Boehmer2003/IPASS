@@ -1,6 +1,12 @@
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 //
-// Created by benja on 22/06/2022.
+//       Author  :   Benjamin Boehmer
+//       Filename:   game.cpp
+//       Part of :   IPASS
 //
+//       Copyright Benjamin Boehmer 2022.
+//
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #include "game.hpp"
 #include <cstdlib>
 
@@ -34,6 +40,7 @@ void game::clear_grid() {
 
 }
 
+
 void game::draw_grid() {
 
     grid.changeLedRGB(doel_x, doel_y, 100, 0, 0);
@@ -57,6 +64,7 @@ void game::beweeg_doel_y_and_x() {
         doel_x = (rand() % 8) + 1;
     }
 }
+
 
 void game::target_controle() {
     if (player_x == doel_x and player_y == doel_y) {
@@ -114,6 +122,7 @@ void game::beweeg_player_y_and_x(int& y,int& x) {
     }
 }
 
+
 void game::powerup_controle() {
     if (player_x == powerup_x and player_y == powerup_y) {
         begin_powerup_time = hwlib::now_us();
@@ -123,6 +132,7 @@ void game::powerup_controle() {
         controle_powerup = false;
     }
 }
+
 
 void game::beweeg_powerup_x_and_y() {
     int rand();
@@ -135,7 +145,6 @@ void game::beweeg_powerup_x_and_y() {
         powerup_y=6;
     }
 }
-
 
 
 void game::games() {

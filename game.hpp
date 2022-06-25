@@ -1,6 +1,13 @@
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 //
-// Created by benja on 22/06/2022.
+//       Author  :   Benjamin Boehmer
+//       Filename:   game.hpp
+//       Part of :   IPASS
 //
+//       Copyright Benjamin Boehmer 2022.
+//
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
 /// @file
 
 
@@ -71,12 +78,19 @@ class game {
     /// \brief
     /// This function checks if the target and the player is on the same place.
     /// \details
-    /// It looks at the x from the targer and player and also to the y and if they are both the same it sets a  flag to true.
+    /// It looks at the x from the target and player and also to the y and if they are both the same it sets a  flag to true.
     void target_controle();
 
+    // \brief
+    /// This function moves the powerup to a new spot
+    /// \details
+    /// It receives a yes or a no from powerup_control and if it is a yes it moves the powerup and else the powerup will stay on same spot.
     void beweeg_powerup_x_and_y();
 
-
+    /// \brief
+    /// This function checks if the powerup and the player is on the same place.
+    /// \details
+    /// It looks at the x and y from the powerup  and if they are both the same it sets the powerup flag to true.
     void powerup_controle();
 public:
     game( mpu6050 & chips);

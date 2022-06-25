@@ -1,8 +1,15 @@
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 //
-// Created by benjamin on 19/06/2022.
+//       Author  :   Benjamin Boehmer
+//       Filename:   MPU6050.hpp
+//       Part of :   IPASS
 //
-/// @file
+//       Copyright Benjamin Boehmer 2022.
+//
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
+/// @file
+// MPU6050 LIBRARY
 #ifndef V1OOPC_EXAMPLES_mpu6050_HPP
 #define V1OOPC_EXAMPLES_mpu6050_HPP
 #include "hwlib.hpp"
@@ -31,10 +38,10 @@ private:
      void starting();
 
     /// \brief
-    ///
+    /// This function is to read from a chip.
     /// \details
-    ///
-     int read(int HIGH,int LOW);
+    /// The function writes and reads for the user the only thing that the user has to givfe is the high- and lowregister.
+     int read(int HIGH_REG,int LOW_REG);
 public:
     /// \brief
     /// the constructor for the class to give the class the right pins.

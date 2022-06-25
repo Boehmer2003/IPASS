@@ -1,6 +1,13 @@
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 //
-// Created by benja on 24/06/2022.
+//       Author  :   Benjamin Boehmer
+//       Filename:   Accelerometer.hpp
+//       Part of :   IPASS
 //
+//       Copyright Benjamin Boehmer 2022.
+//
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
 
 #ifndef V1OOPC_EXAMPLES_ACCELEROMETER_HPP
 #define V1OOPC_EXAMPLES_ACCELEROMETER_HPP

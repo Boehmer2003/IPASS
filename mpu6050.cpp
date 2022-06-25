@@ -1,6 +1,13 @@
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 //
-// Created by benja on 19/06/2022.
+//       Author  :   Benjamin Boehmer
+//       Filename:   MPU6050.cpp
+//       Part of :   IPASS
 //
+//       Copyright Benjamin Boehmer 2022.
+//
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
 #include "mpu6050.hpp"
 #include "hwlib.hpp"
 #include "adressen.hpp"
@@ -22,10 +29,10 @@ int mpu6050::test(){
     return data;
 }
 
-int mpu6050::read(int HIGH,int LOW){
-    bus.write(MPU_Address).write(HIGH);
+int mpu6050::read(int HIGH_REG,int LOW_REG){
+    bus.write(MPU_Address).write(HIGH_REG);
     bus.read(MPU_Address).read(dataStore1, 1);
-    bus.write(MPU_Address).write(LOW);
+    bus.write(MPU_Address).write(LOW_REG);
     bus.read(MPU_Address).read(dataStore2, 1);
     int16_t data = int16_t((dataStore1[0] << 8) | dataStore2[0]);
     return data;
