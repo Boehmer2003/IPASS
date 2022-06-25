@@ -4,7 +4,6 @@
 //       Filename:   Main.cpp
 //       Part of :   IPASS
 //
-//       Copyright Benjamin Boehmer 2022.
 //
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 

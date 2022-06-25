@@ -4,7 +4,6 @@
 //       Filename:   Gyroscope.hpp
 //       Part of :   IPASS
 //
-//       Copyright Benjamin Boehmer 2022.
 //
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 

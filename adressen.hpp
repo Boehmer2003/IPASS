@@ -4,7 +4,6 @@
 //       Filename:   Adressen.hpp
 //       Part of :   IPASS
 //
-//       Copyright Benjamin Boehmer 2022.
 //
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 

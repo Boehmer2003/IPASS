@@ -4,7 +4,6 @@
 //       Filename:   game.cpp
 //       Part of :   IPASS
 //
-//       Copyright Benjamin Boehmer 2022.
 //
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #include "game.hpp"
