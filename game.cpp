@@ -170,7 +170,7 @@ void game::games() {
         draw_grid();
 
         if (controle_doel) {
-            punten++;
+            ++punten;
             if (punten == 1 and !time) {
                 time = true;
             }
