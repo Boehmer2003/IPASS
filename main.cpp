@@ -20,7 +20,7 @@
 //// TODO: opruimen van de code.
 //// TODO: mis een powerup systeem verbeteren.
 //// TODO: testcases schrijven.
-//// TODO:
+
 
 int main() {
     hwlib::target::pin_oc scl = hwlib::target::pin_oc(hwlib::target::pins::scl);
