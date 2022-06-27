@@ -60,7 +60,6 @@ void game::draw_grid() {
 
 
 void game::beweeg_doel_y_and_x() {
-    int rand();
     if (controle_doel) {
         doel_y = (rand() % 8) + 1;
         doel_x = (rand() % 8) + 1;
@@ -79,7 +78,7 @@ void game::target_controle() {
 
 void game::beweeg_player_y_and_x(int& y,int& x) {
     if (x >= 9000) {
-        player_x += 1;
+        ++player_x;
 
         if (player_x > 8 and powerup) {
             player_x = 1;
@@ -91,7 +90,7 @@ void game::beweeg_player_y_and_x(int& y,int& x) {
 
     }
     else if (x <= -9000) {
-        player_x -= 1;
+        --player_x;
         if (player_x < 1 and powerup) {
             player_x = 8;
         }
@@ -102,7 +101,7 @@ void game::beweeg_player_y_and_x(int& y,int& x) {
     }
 
     if (y >= 9000) {
-        player_y -= 1;
+        --player_y;
         if (player_y < 1 and powerup) {
             player_y = 8;
         }
@@ -114,7 +113,7 @@ void game::beweeg_player_y_and_x(int& y,int& x) {
 
     }
     else if (y < -9000) {
-        player_y += 1;
+        ++player_y;
         if (player_y > 8 and powerup) {
             player_y = 1;
         }
@@ -137,7 +136,6 @@ void game::powerup_controle() {
 
 
 void game::beweeg_powerup_x_and_y() {
-    int rand();
     if (controle_powerup ) {
         powerup_x = (rand() % 8) + 1;
         powerup_y = (rand() % 8) + 1;
@@ -171,9 +169,9 @@ void game::games() {
         beweeg_powerup_x_and_y();
         draw_grid();
 
-        if (controle_doel == true) {
+        if (controle_doel) {
             punten++;
-            if (punten == 1 and time == false) {
+            if (punten == 1 and !time) {
                 time = true;
             }
         }

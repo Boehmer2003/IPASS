@@ -125,7 +125,7 @@ captures/
 .externalNativeBuild
 
 # Google Services (e.g. APIs or Firebase)
-# google-services.json
+# google-servicesgit ston
 
 # Freeline
 freeline.py
@@ -1050,3 +1050,4 @@ _linker_flags
 bmptk_fixed_size_stack.c
 test
 *.ld
+latex
