@@ -57,7 +57,7 @@ void game::draw_grid() {
     }
 }
 
-void game::beweeg_doel_y_and_x() {
+void game::move_doel_y_and_x() {
     if (controle_doel) {
         doel_y = (rand() % 8) + 1;
         doel_x = (rand() % 8) + 1;
@@ -74,7 +74,7 @@ void game::target_controle() {
 }
 
 
-void game::beweeg_player_y_and_x(int& y,int& x) {
+void game::move_player_y_and_x(int& y,int& x) {
     if (x >= 9000) {
         ++player_x;
 
@@ -126,7 +126,7 @@ void game::powerup_controle() {
 }
 
 
-void game::beweeg_powerup_x_and_y() {
+void game::move_powerup_x_and_y() {
     if (controle_powerup) {
         powerup_x = (rand() % 8) + 1;
         powerup_y = (rand() % 8) + 1;
@@ -153,11 +153,11 @@ void game::games() {
         auto y = chip.getaccely();
 
         clear_grid();
-        beweeg_player_y_and_x(y, x);
+        move_player_y_and_x(y, x);
         powerup_controle();
         target_controle();
-        beweeg_doel_y_and_x();
-        beweeg_powerup_x_and_y();
+        move_doel_y_and_x();
+        move_powerup_x_and_y();
         draw_grid();
 
         if (controle_doel) {

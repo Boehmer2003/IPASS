@@ -10,13 +10,9 @@
 // http://www.boost.org/LICENSE_1_0.txt)
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-
-
 #include "hwlib.hpp"
 #include "game.hpp"
 
-
-//// TODO: opruimen van de code.
 //// TODO: testcases schrijven.
 
 int main() {

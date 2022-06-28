@@ -69,13 +69,13 @@ class game {
     /// This function looks if the controller has been moved.
     /// \details
     /// The function gets the y and x from the accel x and y and moves the player in the same direction.
-    void beweeg_player_y_and_x(int &y, int &x);
+    void move_player_y_and_x(int &y, int &x);
 
     /// \brief
     /// This function moves the target to a new spot
     /// \details
     /// It receives a yes or a no from target_control and if it is a yes it moves the target and else the target will stay on same spot.
-    void beweeg_doel_y_and_x();
+    void move_doel_y_and_x();
 
     /// \brief
     /// This function checks if the target and the player is on the same place.
@@ -87,7 +87,7 @@ class game {
     /// This function moves the powerup to a new spot
     /// \details
     /// It receives a yes or a no from powerup_control and if it is a yes it moves the powerup and else the powerup will stay on same spot.
-    void beweeg_powerup_x_and_y();
+    void move_powerup_x_and_y();
 
     /// \brief
     /// This function checks if the powerup and the player is on the same place.
