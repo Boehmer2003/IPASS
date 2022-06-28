@@ -22,6 +22,7 @@ int main() {
     mpu6050 chip = mpu6050(bus);
     game spel(chip);
     for (;;) {
+//        spel.oefenen();
         spel.games();
     }
 

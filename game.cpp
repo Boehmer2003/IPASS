@@ -17,7 +17,24 @@ game::game( mpu6050 & chips):
         chip(chips)
         {}
 
+void game::game_reset() {
+     test = true;
+     game_start = false;
+     gameover = false;
+     controle_doel = true;
+     controle_powerup = true;
+     powerup = false;
 
+     diff_time = 0;
+     begin_time = 0;
+     huidige_tijd = 0;
+     begin_powerup_time = 0;
+     time_to_beat = 15;
+     punten = 0;
+
+
+
+}
 void game::starting() {
     grid.initialise();
     gameover = false;
@@ -138,16 +155,68 @@ void game::move_powerup_x_and_y() {
 }
 
 
-void game::games() {
-    hwlib::cout << chip.temperature()<<" graden celcius" << hwlib::endl;
+void game::oefenen() {
     starting();
-    time = false;
+    game_start = false;
     while (!gameover) {
 
-        if (punten == 1 and time) {
-            begin_time = hwlib::now_us();
+        if(game_start){
+            huidige_tijd = hwlib::now_us();
         }
+
+
+        if (punten > 0 and !game_start) {
+            begin_time = hwlib::now_us();
+            game_start = true;
+        }
+
         hwlib::wait_ms(300);
+        auto x = chip.getaccelx();
+        auto y = chip.getaccely();
+
+        clear_grid();
+        move_player_y_and_x(y, x);
+        powerup_controle();
+        target_controle();
+        move_doel_y_and_x();
+        move_powerup_x_and_y();
+        draw_grid();
+
+        if (controle_doel) {
+            ++punten;
+        }
+        if (punten == 5) {
+            diff_time = (huidige_tijd - begin_time) / 1000000;
+            hwlib::cout << "10 punten in  " << diff_time << " sec " << hwlib::endl;
+            game_start = false;
+            huidige_tijd =0;
+            game_start = false;
+            gameover = true;
+        }
+
+
+        grid.write();
+    }
+    game_reset();
+}
+
+
+
+void game::games() {
+    starting();
+    while (!gameover) {
+        if(game_start){
+        huidige_tijd = hwlib::now_us();
+        }
+
+
+        if (punten > 0 and !game_start) {
+            begin_time = hwlib::now_us();
+            game_start = true;
+        }
+
+        hwlib::wait_ms(300);
+
 
         auto x = chip.getaccelx();
         auto y = chip.getaccely();
@@ -162,19 +231,25 @@ void game::games() {
 
         if (controle_doel) {
             ++punten;
-            if (punten == 1 and !time) {
-                time = true;
-            }
         }
-
-        if (punten == 10) {
-            eind_time = hwlib::now_us();
-            diff_time = (eind_time - begin_time) / 1000000;
-            hwlib::cout << "10 punten in " << diff_time << " sec" << hwlib::endl;
+        if (punten == 5 and ((huidige_tijd - begin_time)/1000000)<time_to_beat ) {
+            diff_time = (huidige_tijd - begin_time) / 1000000;
+            hwlib::cout << "5 punten in met " << time_to_beat-diff_time << " sec over" << hwlib::endl;
+            punten = 0;
+            begin_time=0;
+            huidige_tijd =0;
+            game_start = false;
+            --time_to_beat;
+        }
+        else if(((huidige_tijd - begin_time)/1000000)>time_to_beat and !gameover) {
+            hwlib::cout<<"helaas je hebt te veloren bij: "<<time_to_beat<<" seconde" <<" en je had "<<punten<<" punt(en)"<<hwlib::endl;
             gameover = true;
+
         }
 
         grid.write();
     }
-}
 
+    game_reset();
+
+}

@@ -27,7 +27,7 @@ class game {
     mpu6050 chip;
     ledGrid grid = ledGrid(8, 8, leds);
     bool test = true;
-    bool time = false;
+    bool game_start = false;
     bool gameover = false;
     bool controle_doel = true;
     bool controle_powerup = true;
@@ -35,9 +35,9 @@ class game {
 
     int diff_time = 0;
     int begin_time = 0;
-    int eind_time = 0;
+    int huidige_tijd = 0;
     int begin_powerup_time = 0;
-
+    int time_to_beat = 15;
     int punten = 0;
 
     int powerup_x = 6;
@@ -95,13 +95,15 @@ class game {
     /// It looks at the x and y from the powerup  and if they are both the same it sets the powerup flag to true.
     void powerup_controle();
 
+
+    void game_reset();
 public:
     game(mpu6050 &chips);
 
     /// \brief
     /// This function calls upon all the other functions in this class.
+    void oefenen();
     void games();
-
 
 };
 
