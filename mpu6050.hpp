@@ -23,34 +23,32 @@
 /// A class to control a the MPU6050 chip.
 /// \details
 /// A class with functie to receive data from mpu6050.
-class mpu6050: public gyroscope, public accelerometer, public temperature_sensor  {
+class mpu6050: public gyroscope, public accelerometer, public temperature_sensor {
 private:
-    hwlib::i2c_bus & bus;
+    hwlib::i2c_bus &bus;
     uint8_t dataStore[2];
     uint8_t dataStore1[1];
     uint8_t dataStore2[1];
-    bool tester= true;
-
 
 
     /// \brief
     /// A function to start the chip.
     /// \details
     /// The function writes 2 adresses the first one is the adress of the chip and the second address is a reset address this resets the chip and makes it ready.
-     void starting();
+    void starting();
 
     /// \brief
     /// This function is to read from a chip.
     /// \details
     /// The function writes and reads for the user the only thing that the user has to givfe is the high- and lowregister.
-     int read(int HIGH_REG,int LOW_REG);
+    int read(int HIGH_REG, int LOW_REG);
+
 public:
     /// \brief
     /// the constructor for the class to give the class the right pins.
     /// \details
     /// Gives the scl and sda as a bus
-    mpu6050(hwlib::i2c_bus & bus);
-
+    mpu6050(hwlib::i2c_bus &bus);
 
 
     /// \brief
@@ -100,6 +98,8 @@ public:
     /// \details
     /// The function writes to the temperature and receives the temperature around the chip.
     int temperature() override;
+
+    void graden();
 };
 
 

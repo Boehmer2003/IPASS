@@ -27,7 +27,7 @@ void game::starting() {
         if (chip.test() == 0x68) {
             test = false;
         } else {
-            hwlib::cout<<"something went wrong with starting the MPU6050"<<hwlib::endl;
+            hwlib::cout << "something went wrong with starting the MPU6050" << hwlib::endl;
             test = true;
         }
     }
@@ -48,16 +48,14 @@ void game::draw_grid() {
     grid.changeLedRGB(doel_x, doel_y, 100, 0, 0);
     if (powerup) {
         grid.changeLedRGB(player_x, player_y, 0, 100, 20);
-    }
-    else{
+    } else {
         grid.changeLedRGB(player_x, player_y, 0, 0, 100);
     }
-    if (((hwlib::now_us()-begin_powerup_time)/ 1000000)>=5) {
+    if (((hwlib::now_us() - begin_powerup_time) / 1000000) >= 5) {
         powerup = false;
         grid.changeLedRGB(powerup_x, powerup_y, 0, 100, 0);
     }
 }
-
 
 void game::beweeg_doel_y_and_x() {
     if (controle_doel) {
@@ -82,20 +80,17 @@ void game::beweeg_player_y_and_x(int& y,int& x) {
 
         if (player_x > 8 and powerup) {
             player_x = 1;
-        }
-        else if (player_x>=8){
-            player_x=8;
+        } else if (player_x >= 8) {
+            player_x = 8;
         }
 
 
-    }
-    else if (x <= -9000) {
+    } else if (x <= -9000) {
         --player_x;
         if (player_x < 1 and powerup) {
             player_x = 8;
-        }
-        else if (player_x<=1){
-            player_x=1;
+        } else if (player_x <= 1) {
+            player_x = 1;
         }
 
     }
@@ -104,21 +99,17 @@ void game::beweeg_player_y_and_x(int& y,int& x) {
         --player_y;
         if (player_y < 1 and powerup) {
             player_y = 8;
+        } else if (player_y <= 1) {
+            player_y = 1;
         }
-        else if (player_y<=1){
-            player_y=1;
-        }
 
 
-
-    }
-    else if (y < -9000) {
+    } else if (y < -9000) {
         ++player_y;
         if (player_y > 8 and powerup) {
             player_y = 1;
-        }
-        else if (player_y>=8){
-            player_y=8;
+        } else if (player_y >= 8) {
+            player_y = 8;
         }
     }
 }
@@ -136,19 +127,19 @@ void game::powerup_controle() {
 
 
 void game::beweeg_powerup_x_and_y() {
-    if (controle_powerup ) {
+    if (controle_powerup) {
         powerup_x = (rand() % 8) + 1;
         powerup_y = (rand() % 8) + 1;
     }
-    if(powerup_x==doel_x and powerup_y==doel_y){
-        doel_x=1;
-        powerup_y=6;
+    if (powerup_x == doel_x and powerup_y == doel_y) {
+        doel_x = 1;
+        powerup_y = 6;
     }
 }
 
 
 void game::games() {
-    hwlib::cout<<chip.temperature()<<hwlib::endl;
+    hwlib::cout << chip.temperature()<<" graden celcius" << hwlib::endl;
     starting();
     time = false;
     while (!gameover) {
@@ -177,9 +168,9 @@ void game::games() {
         }
 
         if (punten == 10) {
-             eind_time = hwlib::now_us();
+            eind_time = hwlib::now_us();
             diff_time = (eind_time - begin_time) / 1000000;
-            hwlib::cout <<"10 punten in " <<diff_time << " sec" << hwlib::endl;
+            hwlib::cout << "10 punten in " << diff_time << " sec" << hwlib::endl;
             gameover = true;
         }
 

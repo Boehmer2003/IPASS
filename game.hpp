@@ -29,12 +29,12 @@ class game {
     bool test = true;
     bool time = false;
     bool gameover = false;
-    bool controle_doel= true;
-    bool controle_powerup= true;
+    bool controle_doel = true;
+    bool controle_powerup = true;
     bool powerup = false;
 
-    int diff_time =0;
-    int begin_time=0;
+    int diff_time = 0;
+    int begin_time = 0;
     int eind_time = 0;
     int begin_powerup_time = 0;
 
@@ -64,12 +64,12 @@ class game {
     /// \details
     /// This draws the player and the target and if they are not moved they will stay on the same place.
     void draw_grid();
-    
+
     /// \brief
     /// This function looks if the controller has been moved.
     /// \details
     /// The function gets the y and x from the accel x and y and moves the player in the same direction.
-    void beweeg_player_y_and_x(int& y,int& x);
+    void beweeg_player_y_and_x(int &y, int &x);
 
     /// \brief
     /// This function moves the target to a new spot
@@ -94,16 +94,13 @@ class game {
     /// \details
     /// It looks at the x and y from the powerup  and if they are both the same it sets the powerup flag to true.
     void powerup_controle();
+
 public:
-    game( mpu6050 & chips);
+    game(mpu6050 &chips);
 
     /// \brief
     /// This function calls upon all the other functions in this class.
     void games();
-
-
-
-
 
 
 };

@@ -9,10 +9,10 @@
 // (See accompanying file LICENSE_1_0.txt or copy at
 // http://www.boost.org/LICENSE_1_0.txt)
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
 #include "mpu6050.hpp"
 #include "hwlib.hpp"
 #include "adressen.hpp"
+
 
 mpu6050::mpu6050(hwlib::i2c_bus & bus):
     bus(bus)
@@ -24,14 +24,14 @@ void mpu6050::starting() {
     trans.write(0x00);
 }
 
-int mpu6050::test(){
+int mpu6050::test() {
     bus.write(MPU_Address).write(WHO_AM_I);
     bus.read(MPU_Address).read(dataStore, 2);
     int data = dataStore[0];
     return data;
 }
 
-int mpu6050::read(int HIGH_REG,int LOW_REG){
+int mpu6050::read(int HIGH_REG,int LOW_REG) {
     bus.write(MPU_Address).write(HIGH_REG);
     bus.read(MPU_Address).read(dataStore1, 1);
     bus.write(MPU_Address).write(LOW_REG);
@@ -66,4 +66,10 @@ int mpu6050::getaccelz() {
 int mpu6050::temperature() {
     return (read(TEMP_OUT_H,TEMP_OUT_L))/340 + 36.53;
 }
+
+
+
+
+
+
 

@@ -16,11 +16,8 @@
 #include "game.hpp"
 
 
-//// TODO: superklassen per ding maken  accel gyro adn tempratuur.     check
 //// TODO: opruimen van de code.
-//// TODO: mis een powerup systeem verbeteren.
 //// TODO: testcases schrijven.
-
 
 int main() {
     hwlib::target::pin_oc scl = hwlib::target::pin_oc(hwlib::target::pins::scl);
@@ -29,7 +26,7 @@ int main() {
     mpu6050 chip = mpu6050(bus);
     game spel(chip);
     for (;;) {
-            spel.games();
-        }
+        spel.games();
+    }
 
 }
