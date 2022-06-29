@@ -234,7 +234,7 @@ void game::games() {
         }
         if (punten == 5 and ((huidige_tijd - begin_time)/1000000)<time_to_beat ) {
             diff_time = (huidige_tijd - begin_time) / 1000000;
-            hwlib::cout << "5 punten in met " << time_to_beat-diff_time << " sec over" << hwlib::endl;
+            hwlib::cout << "5 punten met " << time_to_beat-diff_time << " sec over" << hwlib::endl;
             punten = 0;
             begin_time=0;
             huidige_tijd =0;

@@ -99,7 +99,8 @@ public:
     /// The function writes to the temperature and receives the temperature around the chip.
     int temperature() override;
 
-    void graden();
+
+
 };
 
 

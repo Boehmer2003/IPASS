@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['singleled_0',['singleLed',['../classsingle_led.Doxygen',1,'']]]
+  ['singleled_0',['singleLed',['../classsingle_led.html',1,'']]]
 ];
