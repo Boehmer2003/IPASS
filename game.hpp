@@ -95,14 +95,19 @@ class game {
     /// It looks at the x and y from the powerup  and if they are both the same it sets the powerup flag to true.
     void powerup_controle();
 
-
+    /// \brief
+    /// resets everything.
     void game_reset();
 public:
     game(mpu6050 &chips);
 
     /// \brief
+    /// This function let's you practise for the game.
+    void practice();
+    /// \brief
     /// This function calls upon all the other functions in this class.
-    void oefenen();
+    /// \details
+    /// the game is that you have to get to 5 point as fast as possible before the timer is over.
     void games();
 
 };

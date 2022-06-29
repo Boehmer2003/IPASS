@@ -64,7 +64,7 @@ void game::draw_grid() {
 
     grid.changeLedRGB(doel_x, doel_y, 100, 0, 0);
     if (powerup) {
-        grid.changeLedRGB(player_x, player_y, 0, 100, 20);
+        grid.changeLedRGB(player_x, player_y, 0, 50, 20);
     } else {
         grid.changeLedRGB(player_x, player_y, 0, 0, 100);
     }
@@ -155,7 +155,7 @@ void game::move_powerup_x_and_y() {
 }
 
 
-void game::oefenen() {
+void game::practice() {
     starting();
     game_start = false;
     while (!gameover) {
@@ -187,7 +187,7 @@ void game::oefenen() {
         }
         if (punten == 5) {
             diff_time = (huidige_tijd - begin_time) / 1000000;
-            hwlib::cout << "10 punten in  " << diff_time << " sec " << hwlib::endl;
+            hwlib::cout << "5 punten in  " << diff_time << " sec " << hwlib::endl;
             game_start = false;
             huidige_tijd =0;
             game_start = false;
